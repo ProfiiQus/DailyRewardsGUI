@@ -25,7 +25,7 @@ public final class DailyRewardsGUI extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        PlayerManager.getInstance().saveOnlinePlayers();
+        PlayerManager.getInstance().saveOnlinePlayers(false);
     }
 
     public static DailyRewardsGUI getPlugin() {

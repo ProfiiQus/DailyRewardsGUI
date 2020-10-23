@@ -3,6 +3,7 @@ package com.profiiqus.dailyrewardsgui.managers;
 import com.profiiqus.dailyrewardsgui.CraftConfig;
 import com.profiiqus.dailyrewardsgui.DailyRewardsGUI;
 import com.profiiqus.dailyrewardsgui.object.LocalPlayer;
+import com.profiiqus.dailyrewardsgui.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -18,11 +19,13 @@ import java.util.UUID;
 public class PlayerManager {
 
     private static PlayerManager instance;
+    private DailyRewardsGUI plugin;
     private File file;
     private FileConfiguration fileConfig;
     private HashMap<UUID, LocalPlayer> playerData;
 
     private PlayerManager() {
+        this.plugin = DailyRewardsGUI.getPlugin();
         this.file = new File(DailyRewardsGUI.getPlugin().getDataFolder(), "data.yml");
         this.tryCreateFile();
         this.fileConfig = YamlConfiguration.loadConfiguration(file);
@@ -54,7 +57,7 @@ public class PlayerManager {
                         e.printStackTrace();
                     }
                 }
-            }.runTaskAsynchronously(DailyRewardsGUI.getPlugin());
+            }.runTaskAsynchronously(this.plugin);
         } else {
             try {
                 fileConfig.save(file);
@@ -76,7 +79,7 @@ public class PlayerManager {
             if(this.hasData(p)) {
                 HashMap<String, Long> rewardData = new HashMap<>();
                 for(String key: fileConfig.getConfigurationSection(uniqueId.toString()).getKeys(false)) {
-                    rewardData.put(key, fileConfig.getLong(key));
+                    rewardData.put(key, fileConfig.getLong(uniqueId.toString() + "." + key));
                 }
                 playerData.put(uniqueId, new LocalPlayer(uniqueId, rewardData));
             } else {
@@ -92,50 +95,47 @@ public class PlayerManager {
         new BukkitRunnable() {
             @Override
             public void run() {
-                saveOnlinePlayers();
+                saveOnlinePlayers(true);
             }
-        }.runTaskTimer(DailyRewardsGUI.getPlugin(), delay, delay);
+        }.runTaskTimer(this.plugin, delay, delay);
     }
 
-    public void saveOnlinePlayers() {
+    public void saveOnlinePlayers(boolean asyncSave) {
         for(Player p: Bukkit.getOnlinePlayers()) {
             UUID uniqueId = p.getUniqueId();
             for(Map.Entry<String, Long> entry: getPlayer(uniqueId).getRewardsData().entrySet()) {
                 fileConfig.set(uniqueId.toString() + "." + entry.getKey(), entry.getValue());
             }
         }
-        this.saveFile(false);
+        this.saveFile(asyncSave);
     }
 
     public void loadPlayer(Player player) {
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                UUID uniqueId = player.getUniqueId();
-                if(hasData(player)) {
-                    HashMap<String, Long> rewardData = new HashMap<>();
-                    for(String key: fileConfig.getConfigurationSection(uniqueId.toString()).getKeys(false)) {
-                        rewardData.put(key, fileConfig.getLong(key));
-                    }
-                    playerData.put(uniqueId, new LocalPlayer(uniqueId, rewardData));
-                } else {
-                    playerData.put(uniqueId, new LocalPlayer(uniqueId));
-                }
+        UUID uniqueId = player.getUniqueId();
+        if(hasData(player)) {
+            HashMap<String, Long> rewardData = new HashMap<>();
+            for(String key: fileConfig.getConfigurationSection(uniqueId.toString()).getKeys(false)) {
+                rewardData.put(key, fileConfig.getLong(uniqueId.toString() + "." + key));
             }
-        }.runTaskAsynchronously(DailyRewardsGUI.getPlugin());
+            playerData.put(uniqueId, new LocalPlayer(uniqueId, rewardData));
+        } else {
+            playerData.put(uniqueId, new LocalPlayer(uniqueId));
+        }
     }
 
     public void savePlayer(Player player) {
+        UUID uniqueId = player.getUniqueId();
         new BukkitRunnable() {
             @Override
             public void run() {
-                UUID uniqueId = player.getUniqueId();
+                // problem is here
                 for(Map.Entry<String, Long> entry: getPlayer(uniqueId).getRewardsData().entrySet()) {
                     fileConfig.set(uniqueId.toString() + "." + entry.getKey(), entry.getValue());
                 }
+                saveFile(true);
+                playerData.remove(uniqueId);
             }
-        }.runTaskAsynchronously(DailyRewardsGUI.getPlugin());
-        this.saveFile(true);
+        }.runTaskAsynchronously(this.plugin);
     }
 
     private boolean hasData(Player player) {
