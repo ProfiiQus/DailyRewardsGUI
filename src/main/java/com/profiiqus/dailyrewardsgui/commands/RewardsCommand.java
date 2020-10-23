@@ -1,7 +1,6 @@
 package com.profiiqus.dailyrewardsgui.commands;
 
 import com.profiiqus.dailyrewardsgui.commands.subcommands.GUI;
-import com.profiiqus.dailyrewardsgui.commands.subcommands.Help;
 import com.profiiqus.dailyrewardsgui.commands.subcommands.Reload;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -16,7 +15,6 @@ public class RewardsCommand implements CommandExecutor {
     public RewardsCommand() {
         this.subCommands = new HashMap<String, SubCommand>() {
             {
-                put("help", new Help());
                 put("reload", new Reload());
                 put("gui", new GUI());
             }
@@ -27,7 +25,7 @@ public class RewardsCommand implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
         if(args.length == 0) {
-            this.subCommands.get("gui");
+            this.subCommands.get("gui").execute(sender, args);
             return true;
         }
 
@@ -37,7 +35,7 @@ public class RewardsCommand implements CommandExecutor {
             return true;
         }
 
-        this.subCommands.get("help").execute(sender, args);
+        this.subCommands.get("gui").execute(sender, args);
         return false;
     }
 }
