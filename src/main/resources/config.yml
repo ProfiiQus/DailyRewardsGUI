@@ -1,0 +1,109 @@
+auto_save: 15
+
+messages:
+  not_enough_permissions: '&cNot enough permissions.'
+  reloaded: '&8[&3DailyRewards&8] &fSuccessfully &breloaded configuration&f.'
+  help:
+    - ''
+    - ''
+    - ''
+  claim_status:
+    claimed: "&cAlready claimed, come back in {TIME_REMAINING}"
+    unclaimed: "&aRight click to claim!"
+
+gui:
+  display_name: 'Daily rewards'
+  layout:
+    - '#########'
+    - '         '
+    - '  a   b  '
+    - '         '
+    - '#########'
+  items:
+    '#':
+      display_name: '&f'
+      material: 'BLACK_STAINED_GLASS_PANE'
+  rewards:
+    'a':
+      - basic_reward
+    'b':
+      - vip_reward
+      - supervip_reward
+
+rewards:
+  basic_reward:
+    required_permission: 'dailyrewards.basic'
+    cooldown: 86400
+    action_list:
+      - ''
+      - ''
+    gui:
+      claimed:
+        material: 'MINECART'
+        display_name: '&eBasic Daily Reward'
+        lore:
+          - ' '
+          - ' &fRewards all of our loyal players with'
+          - ' &fa small present every day they log in.'
+          - ' '
+          - ' {CLAIM}'
+      unclaimed:
+        material: 'CHEST_MINECART'
+        display_name: '&eBasic Daily Reward'
+        lore:
+          - ' '
+          - ' &fRewards all of our loyal players with'
+          - ' &fa small present every day they log in.'
+          - ' '
+          - ' {CLAIM}'
+  vip_reward:
+    required_permission: "dailyrewards.vip"
+    cooldown: 86400
+    action_list:
+      - ''
+      - ''
+    gui:
+      claimed:
+        material: 'MINECART'
+        display_name: '&dVIP Daily Reward'
+        lore:
+          - ' '
+          - ' &fA warm thank to all of our donators that'
+          - ' &fallow us to run the server.'
+          - ' '
+          - ' {CLAIM}'
+      unclaimed:
+        material: 'CHEST_MINECART'
+        display_name: '&dVIP Daily Reward'
+        lore:
+          - ' '
+          - ' &fA warm thank to all of our donators that'
+          - ' &fallow us to run the server.'
+          - ' '
+          - ' {CLAIM}'
+
+  supervip_reward:
+    required_permission: "dailyrewards.supervip"
+    cooldown: 86400
+    action_list:
+      - ''
+      - ''
+    gui:
+      claimed:
+        material: 'MINECART'
+        display_name: '&3SuperVIP Daily Reward'
+        lore:
+          - ' '
+          - ' &fA warm thank to all of our donators that'
+          - ' &fallow us to run the server.'
+          - ' '
+          - ' {CLAIM}'
+      unclaimed:
+        material: 'CHEST_MINECART'
+        display_name: '&3SuperVIP Daily Reward'
+        lore:
+          - ' '
+          - ' &fA warm thank to all of our donators that'
+          - ' &fallow us to run the server.'
+          - ' '
+          - ' {CLAIM}'
