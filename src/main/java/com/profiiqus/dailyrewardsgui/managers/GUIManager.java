@@ -2,6 +2,7 @@ package com.profiiqus.dailyrewardsgui.managers;
 
 import com.profiiqus.dailyrewardsgui.CraftConfig;
 import com.profiiqus.dailyrewardsgui.DailyRewardsGUI;
+import com.profiiqus.dailyrewardsgui.actions.ActionExecutor;
 import com.profiiqus.dailyrewardsgui.object.LocalPlayer;
 import com.profiiqus.dailyrewardsgui.object.Reward;
 import com.profiiqus.dailyrewardsgui.utils.Formatter;
@@ -107,7 +108,7 @@ public class GUIManager {
                             return new StaticGuiElement(entry.getKey(), itemStack,
                                     click -> {
                                         localPlayer.claim(rewardID);
-                                        // Do Claiming
+                                        ActionExecutor.getInstance().executeActionList(player, reward.getActionList());
                                         click.getGui().draw();
                                         return true;
                                     },

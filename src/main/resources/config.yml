@@ -3,10 +3,6 @@ auto_save: 15
 messages:
   not_enough_permissions: '&cNot enough permissions.'
   reloaded: '&8[&3DailyRewards&8] &fSuccessfully &breloaded configuration&f.'
-  help:
-    - ''
-    - ''
-    - ''
   claim_status:
     claimed: "&cAlready claimed, come back in {TIME_REMAINING}"
     unclaimed: "&aRight click to claim!"
@@ -35,8 +31,13 @@ rewards:
     required_permission: 'dailyrewards.basic'
     cooldown: 86400
     action_list:
-      - ''
-      - ''
+      - '[actionbar] &eYou have opened basic daily reward.'
+      - '[broadcast] &ePlayer &6{PLAYER} &ehas opened basic daily reward.'
+      - '[message] &eYou have opened basic daily reward.'
+      - '[player-command] time set day'
+      - '[server-command] say Player {PLAYER} has opened basic daily reward.'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+      - '[title] &eOpened Daily reward;&6You have opened the basic daily reward.'
     gui:
       claimed:
         material: 'MINECART'
@@ -60,8 +61,13 @@ rewards:
     required_permission: "dailyrewards.vip"
     cooldown: 86400
     action_list:
-      - ''
-      - ''
+      - '[actionbar] &dYou have opened basic daily reward.'
+      - '[broadcast] &dPlayer &5{PLAYER} &dhas opened basic daily reward.'
+      - '[message] &dYou have opened basic daily reward.'
+      - '[player-command] time set day'
+      - '[server-command] say Player {PLAYER} has opened basic daily reward.'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+      - '[title] &dOpened Daily reward;&5You have opened the basic daily reward.'
     gui:
       claimed:
         material: 'MINECART'
@@ -86,8 +92,13 @@ rewards:
     required_permission: "dailyrewards.supervip"
     cooldown: 86400
     action_list:
-      - ''
-      - ''
+      - '[actionbar] &3You have opened basic daily reward.'
+      - '[broadcast] &3Player &b{PLAYER} &3has opened basic daily reward.'
+      - '[message] &3You have opened basic daily reward.'
+      - '[player-command] time set day'
+      - '[server-command] say Player {PLAYER} has opened basic daily reward.'
+      - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
+      - '[title] &3Opened Daily reward;&bYou have opened the basic daily reward.'
     gui:
       claimed:
         material: 'MINECART'

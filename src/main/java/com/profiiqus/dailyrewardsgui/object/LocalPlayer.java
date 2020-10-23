@@ -24,6 +24,10 @@ public class LocalPlayer {
         RewardManager rewardMan = RewardManager.getInstance();
         Reward reward = rewardMan.getReward(rewardID);
 
+        if(!this.rewardsData.containsKey(rewardID)) {
+            return 0L;
+        }
+
         long lastClaim = this.rewardsData.get(rewardID);
         long currentMillis = System.currentTimeMillis();
 

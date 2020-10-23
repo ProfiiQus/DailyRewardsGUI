@@ -1,5 +1,6 @@
 package com.profiiqus.dailyrewardsgui;
 
+import com.profiiqus.dailyrewardsgui.actions.ActionExecutor;
 import com.profiiqus.dailyrewardsgui.commands.RewardsCommand;
 import com.profiiqus.dailyrewardsgui.listeners.PlayerDataHandler;
 import com.profiiqus.dailyrewardsgui.managers.GUIManager;
@@ -20,6 +21,7 @@ public final class DailyRewardsGUI extends JavaPlugin {
         RewardManager.getInstance();
         GUIManager.getInstance();
         PlayerManager.getInstance();
+        ActionExecutor.getInstance();
     }
 
     @Override
