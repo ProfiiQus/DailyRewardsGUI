@@ -1,7 +1,6 @@
 package com.profiiqus.dailyrewardsgui.actions;
 
 import com.profiiqus.dailyrewardsgui.actions.types.*;
-import com.profiiqus.dailyrewardsgui.utils.Utils;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;

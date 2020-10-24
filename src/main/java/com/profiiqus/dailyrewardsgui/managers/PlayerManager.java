@@ -3,7 +3,6 @@ package com.profiiqus.dailyrewardsgui.managers;
 import com.profiiqus.dailyrewardsgui.CraftConfig;
 import com.profiiqus.dailyrewardsgui.DailyRewardsGUI;
 import com.profiiqus.dailyrewardsgui.object.LocalPlayer;
-import com.profiiqus.dailyrewardsgui.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
