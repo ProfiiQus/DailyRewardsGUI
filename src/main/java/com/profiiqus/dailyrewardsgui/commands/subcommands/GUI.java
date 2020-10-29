@@ -30,7 +30,7 @@ public class GUI implements SubCommand {
         RewardManager rewards = RewardManager.getInstance();
         GUIManager guis = GUIManager.getInstance();
 
-        InventoryGui gui = guis.buildGUI(player, rewards.getRewards(player));
+        InventoryGui gui = guis.buildGUI(player, rewards.getRewards());
         gui.show(player);
     }
 }

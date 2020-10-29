@@ -3,16 +3,13 @@ auto_save: 15
 messages:
   not_enough_permissions: '&cNot enough permissions.'
   reloaded: '&8[&3DailyRewards&8] &fSuccessfully &breloaded configuration&f.'
-  claim_status:
-    claimed: "&cAlready claimed, come back in {TIME_REMAINING}"
-    unclaimed: "&aRight click to claim!"
 
 gui:
   display_name: 'Daily rewards'
   layout:
     - '#########'
     - '         '
-    - '  a   b  '
+    - ' a  b  c '
     - '         '
     - '#########'
   items:
@@ -24,17 +21,20 @@ gui:
       - basic_reward
     'b':
       - vip_reward
+    'c':
       - supervip_reward
 
 rewards:
   basic_reward:
-    required_permission: 'dailyrewards.basic'
+    permissions:
+      view_permission: ''
+      claim_permission: ''
     cooldown: 86400
     action_list:
       - '[actionbar] &eYou have opened basic daily reward.'
       - '[broadcast] &ePlayer &6{PLAYER} &ehas opened basic daily reward.'
       - '[message] &eYou have opened basic daily reward.'
-      - '[player-command] time set day'
+      - '[player-command] me I have opened the basic daily reward!'
       - '[server-command] say Player {PLAYER} has opened basic daily reward.'
       - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
       - '[title] &eOpened Daily reward;&6You have opened the basic daily reward.'
@@ -47,7 +47,7 @@ rewards:
           - ' &fRewards all of our loyal players with'
           - ' &fa small present every day they log in.'
           - ' '
-          - ' {CLAIM}'
+          - '&cAlready claimed, come back in {TIME_REMAINING}'
       unclaimed:
         material: 'CHEST_MINECART'
         display_name: '&eBasic Daily Reward'
@@ -56,15 +56,26 @@ rewards:
           - ' &fRewards all of our loyal players with'
           - ' &fa small present every day they log in.'
           - ' '
-          - ' {CLAIM}'
+          - '&aRight click to claim!'
+      cant-claim:
+        material: 'TNT_MINECART'
+        display_name: '&eBasic Daily Reward'
+        lore:
+          - ' '
+          - ' &fRewards all of our loyal players with'
+          - ' &fa small present every day they log in.'
+          - ' '
+          - ' &cNot enough permissions to claim this.'
   vip_reward:
-    required_permission: "dailyrewards.vip"
+    permissions:
+      view_permission: ''
+      claim_permission: 'dailyrewardsgui.claim.vip'
     cooldown: 86400
     action_list:
       - '[actionbar] &dYou have opened basic daily reward.'
       - '[broadcast] &dPlayer &5{PLAYER} &dhas opened basic daily reward.'
       - '[message] &dYou have opened basic daily reward.'
-      - '[player-command] time set day'
+      - '[player-command] me I have opened the VIP daily reward!'
       - '[server-command] say Player {PLAYER} has opened basic daily reward.'
       - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
       - '[title] &dOpened Daily reward;&5You have opened the basic daily reward.'
@@ -77,7 +88,7 @@ rewards:
           - ' &fA warm thank to all of our donators that'
           - ' &fallow us to run the server.'
           - ' '
-          - ' {CLAIM}'
+          - '&cAlready claimed, come back in {TIME_REMAINING}'
       unclaimed:
         material: 'CHEST_MINECART'
         display_name: '&dVIP Daily Reward'
@@ -86,16 +97,26 @@ rewards:
           - ' &fA warm thank to all of our donators that'
           - ' &fallow us to run the server.'
           - ' '
-          - ' {CLAIM}'
-
+          - '&aRight click to claim!'
+      cant-claim:
+        material: 'TNT_MINECART'
+        display_name: '&dVIP Daily Reward'
+        lore:
+          - ' '
+          - ' &fRewards all of our loyal players with'
+          - ' &fa small present every day they log in.'
+          - ' '
+          - ' &cYou need rank VIP to claim this!'
   supervip_reward:
-    required_permission: "dailyrewards.supervip"
+    permissions:
+      view_permission: ''
+      claim_permission: 'dailyrewardsgui.claimsupervip'
     cooldown: 86400
     action_list:
       - '[actionbar] &3You have opened basic daily reward.'
       - '[broadcast] &3Player &b{PLAYER} &3has opened basic daily reward.'
       - '[message] &3You have opened basic daily reward.'
-      - '[player-command] time set day'
+      - '[player-command] me I have opened the SuperVIP daily reward!'
       - '[server-command] say Player {PLAYER} has opened basic daily reward.'
       - '[sound] ENTITY_EXPERIENCE_ORB_PICKUP'
       - '[title] &3Opened Daily reward;&bYou have opened the basic daily reward.'
@@ -108,7 +129,7 @@ rewards:
           - ' &fA warm thank to all of our donators that'
           - ' &fallow us to run the server.'
           - ' '
-          - ' {CLAIM}'
+          - '&cAlready claimed, come back in {TIME_REMAINING}'
       unclaimed:
         material: 'CHEST_MINECART'
         display_name: '&3SuperVIP Daily Reward'
@@ -117,4 +138,13 @@ rewards:
           - ' &fA warm thank to all of our donators that'
           - ' &fallow us to run the server.'
           - ' '
-          - ' {CLAIM}'
+          - '&aRight click to claim!'
+      cant-claim:
+        material: 'TNT_MINECART'
+        display_name: '&3VIP Daily Reward'
+        lore:
+          - ' '
+          - ' &fRewards all of our loyal players with'
+          - ' &fa small present every day they log in.'
+          - ' '
+          - ' &cYou need rank SuperVIP to claim this!'

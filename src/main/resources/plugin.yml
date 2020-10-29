@@ -1,5 +1,5 @@
 name: DailyRewardsGUI
-version: ${project.version}
+version: 1.0
 main: com.profiiqus.dailyrewardsgui.DailyRewardsGUI
 authors: [ ProfiiQus ]
 description: A simple GUI for easy administration of Daily Rewards

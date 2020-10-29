@@ -6,7 +6,6 @@ import com.profiiqus.dailyrewardsgui.utils.Formatter;
 import com.profiiqus.dailyrewardsgui.utils.Utils;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -47,12 +46,21 @@ public class RewardManager {
             unclaimedMeta.setLore(Formatter.colorize(Utils.expandList(unclaimedLore, (ArrayList<String>) config.get(path + "gui.unclaimed.lore"))));
             unclaimedItem.setItemMeta(unclaimedMeta);
 
+            ItemStack cantClaimItem = new ItemStack(Material.valueOf(config.getString(path + "gui.cant-claim.material")), 1);
+            ItemMeta cantClaimMeta = cantClaimItem.getItemMeta();
+            cantClaimMeta.setDisplayName(Formatter.colorize(config.getString(path + "gui.unclaimed.display_name")));
+            List<String> cantClaimLore = new ArrayList<>(Arrays.asList(cantClaimMeta.getDisplayName()));
+            cantClaimMeta.setLore(Formatter.colorize(Utils.expandList(cantClaimLore, (ArrayList<String>) config.get(path + "gui.unclaimed.lore"))));
+            cantClaimItem.setItemMeta(cantClaimMeta);
+
             Reward reward = new Reward(key,
-                    config.getString(path + "required_permission"),
+                    config.getString(path + "permissions.view_permission"),
+                    config.getString(path + "permissions.claim_permission"),
                     config.getInt(path + "cooldown"),
                     (ArrayList<String>) config.get(path + "action_list"),
                     claimedItem,
-                    unclaimedItem);
+                    unclaimedItem,
+                    cantClaimItem);
 
             Utils.log("Loaded reward '" + reward.getID() + "'.");
             rewards.add(reward);
@@ -66,14 +74,8 @@ public class RewardManager {
         return instance;
     }
 
-    public List<Reward> getRewards(Player player) {
-        List<Reward> eligibleRewards = new ArrayList<>();
-        for(Reward reward: this.rewards) {
-            if(player.hasPermission(reward.getRequiredPermission())) {
-                eligibleRewards.add(reward);
-            }
-        }
-        return eligibleRewards;
+    public List<Reward> getRewards() {
+        return this.rewards;
     }
 
     public Reward getReward(String id) {
