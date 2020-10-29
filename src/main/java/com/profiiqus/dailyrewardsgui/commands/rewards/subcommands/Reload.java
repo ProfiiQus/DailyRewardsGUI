@@ -1,4 +1,4 @@
-package com.profiiqus.dailyrewardsgui.commands.subcommands;
+package com.profiiqus.dailyrewardsgui.commands.rewards.subcommands;
 
 import com.profiiqus.dailyrewardsgui.CraftConfig;
 import com.profiiqus.dailyrewardsgui.commands.SubCommand;

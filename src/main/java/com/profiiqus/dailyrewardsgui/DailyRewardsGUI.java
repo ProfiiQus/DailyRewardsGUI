@@ -1,7 +1,7 @@
 package com.profiiqus.dailyrewardsgui;
 
 import com.profiiqus.dailyrewardsgui.actions.ActionExecutor;
-import com.profiiqus.dailyrewardsgui.commands.RewardsCommand;
+import com.profiiqus.dailyrewardsgui.commands.rewards.RewardsCommand;
 import com.profiiqus.dailyrewardsgui.listeners.PlayerDataHandler;
 import com.profiiqus.dailyrewardsgui.managers.GUIManager;
 import com.profiiqus.dailyrewardsgui.managers.PlayerManager;

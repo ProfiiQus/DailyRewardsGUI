@@ -1,7 +1,8 @@
-package com.profiiqus.dailyrewardsgui.commands;
+package com.profiiqus.dailyrewardsgui.commands.rewards;
 
-import com.profiiqus.dailyrewardsgui.commands.subcommands.GUI;
-import com.profiiqus.dailyrewardsgui.commands.subcommands.Reload;
+import com.profiiqus.dailyrewardsgui.commands.SubCommand;
+import com.profiiqus.dailyrewardsgui.commands.rewards.subcommands.GUI;
+import com.profiiqus.dailyrewardsgui.commands.rewards.subcommands.Reload;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
