@@ -23,4 +23,4 @@ Daily Rewards GUI is a simple plugin created for management for Spigot server da
 
 (The best ones, go check them out!)
 * [Phoenix616/InventoryGUI](https://github.com/Phoenix616/InventoryGui)
-* [CryptoMorin/XSeries](https://www.spigotmc.org/threads/xseries-xmaterial-xparticle-xsound-xpotion-titles-actionbar-etc.378136/)
+* [CryptoMorin/XSeries](https://github.com/CryptoMorin/XSeries)
