@@ -4,6 +4,10 @@
 
 Daily Rewards GUI is a simple plugin created for management for Spigot server daily rewards. The Rewards are completely customizable (from custom action-lists to GUI display) with customizable cooldowns. They are all displayed in a nice GUI (making it nice is your job in this scenario).
 
+## Download
+
+You can download the latest builds at the [releases page](https://github.com/ProfiiQus/DailyRewardsGUI/releases).
+
 ## Requirements
 
 * Java 8+
@@ -12,7 +16,7 @@ Daily Rewards GUI is a simple plugin created for management for Spigot server da
 ## Commands
 
 * /rewards gui - Opens the GUI (or simply **/rewards**)
-* /rewards reload - Reloads the plugin (W.I.P.)
+* /rewards reload - Reloads the plugin configuration
 
 ## Permissions
 
