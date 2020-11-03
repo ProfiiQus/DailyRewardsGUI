@@ -48,9 +48,9 @@ public class RewardManager {
 
             ItemStack cantClaimItem = new ItemStack(Material.valueOf(config.getString(path + "gui.cant-claim.material")), 1);
             ItemMeta cantClaimMeta = cantClaimItem.getItemMeta();
-            cantClaimMeta.setDisplayName(Formatter.colorize(config.getString(path + "gui.unclaimed.display_name")));
+            cantClaimMeta.setDisplayName(Formatter.colorize(config.getString(path + "gui.cant-claim.display_name")));
             List<String> cantClaimLore = new ArrayList<>(Arrays.asList(cantClaimMeta.getDisplayName()));
-            cantClaimMeta.setLore(Formatter.colorize(Utils.expandList(cantClaimLore, (ArrayList<String>) config.get(path + "gui.unclaimed.lore"))));
+            cantClaimMeta.setLore(Formatter.colorize(Utils.expandList(cantClaimLore, (ArrayList<String>) config.get(path + "gui.cant-claim.lore"))));
             cantClaimItem.setItemMeta(cantClaimMeta);
 
             Reward reward = new Reward(key,

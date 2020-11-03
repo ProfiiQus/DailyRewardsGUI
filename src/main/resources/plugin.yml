@@ -1,5 +1,5 @@
 name: DailyRewardsGUI
-version: 1.0
+version: 1.0.1
 main: com.profiiqus.dailyrewardsgui.DailyRewardsGUI
 authors: [ ProfiiQus ]
 description: A simple GUI for easy administration of Daily Rewards
